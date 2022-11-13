@@ -8,11 +8,11 @@ public class Customer{
     private Boolean onApp;
     private Double moneyAmount;
 
-    public Customer (String firstName, String lastName, Address address, Boolean onApp, Double moneyAmount) {
+    public Customer (String firstName, String lastName, Address address, Double moneyAmount) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.address = address;
-        this.onApp = onApp;
+        this.onApp = true;
         this.moneyAmount = moneyAmount;
     }
     

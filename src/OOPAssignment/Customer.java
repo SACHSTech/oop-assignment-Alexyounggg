@@ -4,7 +4,7 @@ public class Customer{
 
     String firstName;
     String lastName;
-    Address address;
+    Address address;    
     Boolean onApp;
     Double moneyAmount;
 

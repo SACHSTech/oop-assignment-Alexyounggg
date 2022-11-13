@@ -2,8 +2,8 @@ package OOPAssignment;
 
 public class Products {
     
-    Double price;
-    String nameOfProduct;
+    private Double price;
+    private String nameOfProduct;
 
     public Products (Double price, String nameOfProduct) {
         this.price = price;

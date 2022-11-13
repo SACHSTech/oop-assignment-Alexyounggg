@@ -2,10 +2,10 @@ package OOPAssignment;
 
 public class Address {
     
-    String customerStreet;
-    String customerCity;
-    String customerProvince;
-    String customerCountry;
+    private String customerStreet;
+    private String customerCity;
+    private String customerProvince;
+    private String customerCountry;
 
     public Address(String customerStreet, String customerCity, String customerProvince, String customerCountry) {
         this.customerStreet = customerStreet;

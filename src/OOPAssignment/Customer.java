@@ -2,11 +2,11 @@ package OOPAssignment;
 
 public class Customer{
 
-    String firstName;
-    String lastName;
-    Address address;    
-    Boolean onApp;
-    Double moneyAmount;
+    private String firstName;
+    private String lastName;
+    private Address address;    
+    private Boolean onApp;
+    private Double moneyAmount;
 
     public Customer (String firstName, String lastName, Address address, Boolean onApp, Double moneyAmount) {
         this.firstName = firstName;

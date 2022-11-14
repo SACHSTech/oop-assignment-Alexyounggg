@@ -7,6 +7,18 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
 
+        //Objects
+        Customer userCustomer;
+        OnlineCart userCart;
+        Basketball smallBall;
+        Basketball bigBall;
+        Keyboard blueSwitchKeyboard;
+        Keyboard normalKeyboard;
+        Laptop gamingLaptop;
+        Laptop workLaptop;
+
+        
+        // Intialize variables
         String firstName;
         String lastName;
         String street;
@@ -14,6 +26,10 @@ public class Main {
         String province;
         String country;
         Double moneyAmount;
+        Boolean emptyCart;
+        Double totalCost; 
+        int[] itemSize = new int [20];
+        String[] itemNames = new String [20];
 
         BufferedReader key = new BufferedReader(new InputStreamReader(System.in));
 
@@ -34,7 +50,16 @@ public class Main {
         System.out.print("We are almost finished! We would like to know how much money you want to put into the app. You can add or withdraw money later on: ");
         moneyAmount = Double.parseDouble(key.readLine());
 
+        // Creating customer object
+
+        userCustomer = new Customer (firstName, lastName, new Address(street, city, province, country), moneyAmount);
         
+        // Creating cart object
+        userCart = new OnlineCart(itemSize, totalCost, emptyCart, itemNames);
+        
+        System.out.print("Great job! You can now get started with shopping.");
+
+        System.out.print("Items: ")
 
     }
 }

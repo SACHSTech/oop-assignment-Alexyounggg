@@ -26,10 +26,13 @@ public class Main {
         String province;
         String country;
         Double moneyAmount;
-        Boolean emptyCart;
+        Boolean onApp = true;
+        Boolean emptyCart = true;
         Double totalCost; 
-        int[] itemSize = new int [20];
+        totalCost = 0.00;
         String[] itemNames = new String [20];
+        int itemSize = itemNames.length;
+        int n = 0;
 
         BufferedReader key = new BufferedReader(new InputStreamReader(System.in));
 
@@ -43,9 +46,9 @@ public class Main {
         street = key.readLine();
         System.out.print("Please enter your city: ");
         city = key.readLine();
-        System.out.print("Please enter your province");
+        System.out.print("Please enter your province: ");
         province = key.readLine();
-        System.out.print("Please enter your country");
+        System.out.print("Please enter your country: ");
         country = key.readLine();
         System.out.print("We are almost finished! We would like to know how much money you want to put into the app. You can add or withdraw money later on: ");
         moneyAmount = Double.parseDouble(key.readLine());
@@ -56,10 +59,55 @@ public class Main {
         
         // Creating cart object
         userCart = new OnlineCart(itemSize, totalCost, emptyCart, itemNames);
+
+        smallBall = new Basketball(28.00, "Kids Basketball", 27.5, "yellow");
+        bigBall = new Basketball(35.00, "Adults Basketball", 29.5, "brown");
+       
         
-        System.out.print("Great job! You can now get started with shopping.");
+        System.out.print("Great job! You can now get started with shopping.  ");
+        System.out.print("Some commands to assist you: Shop, moneyCheck, cartSize.");
+        while(onApp == true) {
+        System.out.println("What would you like to do?: ");
+        String command = key.readLine();
 
-        System.out.print("Items: ")
+       
 
+        if(command.equals("Shop")) {
+            System.out.print("Items: Small basketball, Big basketball ");
+            System.out.print("What would you like to purchase: ");
+            String item = key.readLine();
+
+            itemNames[n] = item;
+            n++;
+
+            if (item.equals("Small Basketball") && moneyAmount > 28){
+                totalCost += 28;
+                moneyAmount -= 28;
+                System.out.print("You have purchased a small basketball for $" +smallBall.getPrice());
+            }
+
+            else if (item.equals("Big Basketball") && moneyAmount > 35){
+                totalCost += 35;
+                userCustomer.pay();
+            }
+            
+            
+        }
+
+        else if (command.equals("moneyCheck")) {
+            System.out.println("You have $" + userCustomer.getMoney() +" left");
+            
+        }
+
+        else if(command.equals("totalCost")){
+            System.out.println("Total cost of $" + userCart.getTotalCost());
+        }
+
+        else if(command.equals("cartSize")){ 
+            System.out.println("You have a total of " +userCart.getNumberOfItems() + "items");
+        }
+        
+        
+    }
     }
 }

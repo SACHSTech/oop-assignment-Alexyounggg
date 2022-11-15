@@ -1,11 +1,12 @@
 package OOPAssignment;
 
-public class Basketball {
+public class Basketball extends Products{
 
     private Double size;
     private String colour;
 
-    public Basketball(Double size, String colour) {
+    public Basketball(Double price, String nameOfProduct, Double size, String colour) {
+        super(price, nameOfProduct);
         this.size = size;
         this.colour = colour;
     

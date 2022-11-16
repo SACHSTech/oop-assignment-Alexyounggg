@@ -1,9 +1,14 @@
 package OOPAssignment;
 
 import java.io.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+
 
 public class Main {
     
+
+    private static final String ArrayUtils = null;
 
     public static void main(String[] args) throws IOException {
 
@@ -30,9 +35,10 @@ public class Main {
         Boolean emptyCart = true;
         Double totalCost; 
         totalCost = 0.00;
-        String[] itemNames = new String [20];
-        int itemSize = itemNames.length;
         int n = 0;
+        ArrayList<String> itemNames = new ArrayList<String>();
+        int itemSize = 0;
+      
 
         BufferedReader key = new BufferedReader(new InputStreamReader(System.in));
 
@@ -51,14 +57,10 @@ public class Main {
         System.out.print("Please enter your country: ");
         country = key.readLine();
         System.out.print("We are almost finished! We would like to know how much money you want to put into the app. You can add or withdraw money later on: ");
-        moneyAmount = Double.parseDouble(key.readLine());
-
-        // Creating customer object
-
-        userCustomer = new Customer (firstName, lastName, new Address(street, city, province, country), moneyAmount);
+        moneyAmount = Double.parseDouble(key.readLine());      
         
         // Creating cart object
-        userCart = new OnlineCart(itemSize, totalCost, emptyCart, itemNames);
+        
 
         smallBall = new Basketball(28.00, "Kids Basketball", 27.5, "yellow");
         bigBall = new Basketball(35.00, "Adults Basketball", 29.5, "brown");
@@ -66,7 +68,11 @@ public class Main {
         
         System.out.print("Great job! You can now get started with shopping.  ");
         System.out.print("Some commands to assist you: Shop, moneyCheck, cartSize.");
+        
+        
         while(onApp == true) {
+        userCustomer = new Customer (firstName, lastName, new Address(street, city, province, country), moneyAmount);
+        userCart = new OnlineCart(itemSize, totalCost, emptyCart, itemNames);
         System.out.println("What would you like to do?: ");
         String command = key.readLine();
 
@@ -74,11 +80,14 @@ public class Main {
 
         if(command.equals("Shop")) {
             System.out.print("Items: Small basketball, Big basketball ");
-            System.out.print("What would you like to purchase: ");
+            System.out.print(" What would you like to purchase: ");
             String item = key.readLine();
 
-            itemNames[n] = item;
+            itemNames.add(item);
+            itemSize = itemNames.size();
             n++;
+
+            
 
             if (item.equals("Small Basketball") && moneyAmount > 28){
                 totalCost += 28;
@@ -88,7 +97,8 @@ public class Main {
 
             else if (item.equals("Big Basketball") && moneyAmount > 35){
                 totalCost += 35;
-                userCustomer.pay();
+                moneyAmount -= 35;
+                System.out.print("You have purchased a big basketball for $" +bigBall.getPrice());
             }
             
             
@@ -106,8 +116,59 @@ public class Main {
         else if(command.equals("cartSize")){ 
             System.out.println("You have a total of " +userCart.getNumberOfItems() + "items");
         }
-        
-        
+
+        else if (command.equals("Purchase")){
+            System.out.println("Thank you for confirming your purhcase " +userCustomer.getFirstName() + "! We will ship everything to " + userCustomer.getAddress());
+        }
+
+        else if (command.equals("Balance")){
+            System.out.println("Do you want to put or withdraw money from your account?: ");
+            String balance = key.readLine();
+
+            if (balance.equals("Put")){
+                System.out.println("How much money are you going to put in?: ");
+                Double putMoney = Double.parseDouble(key.readLine());
+                moneyAmount += putMoney;
+            }
+
+            if (balance.equals("Withdraw")){
+                System.out.println("How much money are you going to take out?: ");
+                Double withdrawMoney = Double.parseDouble(key.readLine());
+                if (withdrawMoney > moneyAmount) {
+                    System.out.print("Invalid request.");
+
+                }
+                else{
+                    moneyAmount -= withdrawMoney;
+                }
+
+            }
+        }
+        else if(command.equals("Remove")){
+            System.out.println("Which item do you want to remove.");
+            for (int i = 0; i < n ; i++) {
+                System.out.println(itemNames.get(i));
+
+                
+            }
+
+            int takeOut = Integer.parseInt(key.readLine());
+            System.out.println("You have removed " + itemNames.get(takeOut));
+            itemNames.remove(takeOut);
+                
+
+            
+                
+            
+        }
+
+        else if(command.equals("Cart items") && itemSize > 1){
+            for (int i = 0; i < n; i++){
+                System.out.println(itemNames.get(i));
+            }
+           
+        }
+      
     }
     }
 }

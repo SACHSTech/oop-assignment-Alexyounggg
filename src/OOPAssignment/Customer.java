@@ -32,7 +32,9 @@ public class Customer{
         return this.moneyAmount;
     }
 
-    public void pay(){
-        this.moneyAmount -= 35.0;
+    public String getAddress() {
+        return this.address.toString();
     }
+
+    
 }

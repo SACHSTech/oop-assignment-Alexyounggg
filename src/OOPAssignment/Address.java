@@ -14,7 +14,7 @@ public class Address {
         this.customerCountry = customerCountry;  
     }
 
-    public String getAddress() {
+    public String toString() {
         return this.customerProvince + "," + this.customerCountry + "on" + this.customerCity + "," + this.customerStreet;
     }
 }

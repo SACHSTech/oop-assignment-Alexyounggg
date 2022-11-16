@@ -1,24 +1,19 @@
 package OOPAssignment;
 
-public class Keyboard {
+public class Keyboard extends Products {
     
     private int sizePercent;
-    private Boolean ifLighting;
     private Boolean ifWireless;
 
-    public Keyboard (int sizePercent, Boolean ifLighting, Boolean ifWireless) {
+    public Keyboard (Double price, String nameOfProduct, int sizePercent, Boolean ifWireless) {
+        super(price, nameOfProduct);
         this.sizePercent = sizePercent;
-        this.ifLighting = ifLighting;
         this.ifWireless = ifWireless;
     }
 
     public int getSizePercent() {
         return this.sizePercent;
 
-    }
-
-    public Boolean getIfLighting() {
-        return this.ifLighting;
     }
 
     public Boolean getIfWireless() {

@@ -1,12 +1,13 @@
 package OOPAssignment;
 
-public class Laptop {
+public class Laptop extends Products {
     
     private String processor;
     private Boolean hasCamera;
     private String typeOfGPU;
    
-    public Laptop (String processor, Boolean hasCamera, String typeOfGPU) {
+    public Laptop (Double price, String nameOfProduct, String processor, Boolean hasCamera, String typeOfGPU) {
+        super(price,nameOfProduct);
         this.processor = processor;
         this.hasCamera = hasCamera;
         this.typeOfGPU = typeOfGPU;

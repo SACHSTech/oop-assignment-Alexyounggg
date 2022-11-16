@@ -2,13 +2,12 @@ package OOPAssignment;
 
 import java.io.*;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 
 public class Main {
     
 
-    private static final String ArrayUtils = null;
+
 
     public static void main(String[] args) throws IOException {
 
@@ -21,6 +20,8 @@ public class Main {
         Keyboard normalKeyboard;
         Laptop gamingLaptop;
         Laptop workLaptop;
+        VideoGames minecraft;
+        Boardgames monopoly;
 
         
         // Intialize variables
@@ -67,6 +68,8 @@ public class Main {
         normalKeyboard = new Keyboard(10.00, "Normal Keyboard" ,100, false);
         gamingLaptop = new Laptop (1500.00, "Gaming Laptop", "I9", true, "RTX 30");
         workLaptop = new Laptop(700.00, "Work Laptop" ,"I5", true, "None");
+        minecraft = new VideoGames(35.00, "Minecraft", 5, 10, "PC", "Open world", true);
+        monopoly = new Boardgames(20.00, "Monopoly", 8, 8, 400, "Dice" );
        
         
         System.out.print("Great job! You can now get started with shopping.  ");
@@ -76,7 +79,7 @@ public class Main {
         while(onApp == true) {
         userCustomer = new Customer (firstName, lastName, new Address(street, city, province, country), moneyAmount);
         userCart = new OnlineCart(itemSize, totalCost, emptyCart, itemNames);
-        System.out.println("What would you like to do?: ");
+        System.out.print("What would you like to do?: ");
         String command = key.readLine();
 
        
@@ -143,6 +146,24 @@ public class Main {
                 totalCost += 700;
                 moneyAmount -= 700;
                 System.out.print("You have purchased a work laptop for $" +workLaptop.getPrice());
+            }
+
+            else if (item.equals("Minecraft")){
+                itemNames.add(item);
+                itemSize = itemNames.size();
+                n++;
+                totalCost += 35;
+                moneyAmount -= 35;
+                System.out.print("You have purchased a Minecraft for $" + minecraft.getPrice());
+            }
+
+            else if(item.equals("Monopoly")){ 
+                itemNames.add(item);
+                itemSize = itemNames.size();
+                n++;
+                totalCost += 20;
+                moneyAmount -= 20;
+                System.out.print("You have purchased a work laptop for $" + monopoly.getPrice());
             }
 
             else{
@@ -238,6 +259,14 @@ public class Main {
             else if (itemNames.get(takeOut).equals("Work laptop")){
                 totalCost -= 700;
                
+            }
+
+            else if (itemNames.get(takeOut).equals("Minecraft")){
+                totalCost -= 30;
+            }
+
+            else if (itemNames.get(takeOut).equals("Monopoly")){
+                totalCost -= 20;
             }
 
             itemNames.remove(takeOut);

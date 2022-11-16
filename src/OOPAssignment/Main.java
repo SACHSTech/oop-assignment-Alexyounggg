@@ -17,7 +17,7 @@ public class Main {
         OnlineCart userCart;
         Basketball smallBall;
         Basketball bigBall;
-        Keyboard blueSwitchKeyboard;
+        MechanicalKeyboard blueSwitchKeyboard;
         Keyboard normalKeyboard;
         Laptop gamingLaptop;
         Laptop workLaptop;
@@ -59,11 +59,14 @@ public class Main {
         System.out.print("We are almost finished! We would like to know how much money you want to put into the app. You can add or withdraw money later on: ");
         moneyAmount = Double.parseDouble(key.readLine());      
         
-        // Creating cart object
+        // Creating product objects
         
-
         smallBall = new Basketball(28.00, "Kids Basketball", 27.5, "yellow");
         bigBall = new Basketball(35.00, "Adults Basketball", 29.5, "brown");
+        blueSwitchKeyboard = new MechanicalKeyboard(100.00, "Blue Switch Keyboard" ,100, true, "Blue Switch", true);
+        normalKeyboard = new Keyboard(10.00, "Normal Keyboard" ,100, false);
+        gamingLaptop = new Laptop (1500.00, "Gaming Laptop", "I9", true, "RTX 30");
+        workLaptop = new Laptop(700.00, "Work Laptop" ,"I5", true, "None");
        
         
         System.out.print("Great job! You can now get started with shopping.  ");
@@ -79,27 +82,78 @@ public class Main {
        
 
         if(command.equals("Shop")) {
-            System.out.print("Items: Small basketball, Big basketball ");
+            System.out.print("Items:\n 1. Small basketball\n 2. Big basketball \n 3. Blue switch keyboard \n 4. Membrane keyboard \n 5. Gaming laptop \n 6. Work laptop\n");
             System.out.print(" What would you like to purchase: ");
             String item = key.readLine();
 
-            itemNames.add(item);
-            itemSize = itemNames.size();
-            n++;
+            
 
             
 
-            if (item.equals("Small Basketball") && moneyAmount > 28){
+            if (item.equals("Small basketball") && moneyAmount > 28){
+                itemNames.add(item);
+                itemSize = itemNames.size();
+                n++;
                 totalCost += 28;
                 moneyAmount -= 28;
                 System.out.print("You have purchased a small basketball for $" +smallBall.getPrice());
             }
 
-            else if (item.equals("Big Basketball") && moneyAmount > 35){
+            else if (item.equals("Big basketball") && moneyAmount > 35){
+                itemNames.add(item);
+                itemSize = itemNames.size();
+                n++;
                 totalCost += 35;
                 moneyAmount -= 35;
                 System.out.print("You have purchased a big basketball for $" +bigBall.getPrice());
             }
+
+            else if (item.equals("Blue switch keyboard") && moneyAmount > 100){
+                itemNames.add(item);
+                itemSize = itemNames.size();
+                n++;
+                totalCost += 100;
+                moneyAmount -= 100;
+                System.out.print("You have purchased a blue switch keyboard for $" +blueSwitchKeyboard.getPrice());
+            }
+
+            
+            else if (item.equals("Work keyboard") && moneyAmount > 10){
+                itemNames.add(item);
+                itemSize = itemNames.size();
+                n++;
+                totalCost += 10;
+                moneyAmount -= 10;
+                System.out.print("You have purchased a work keyboardfor $" +normalKeyboard.getPrice());
+            }
+
+            else if (item.equals("Gaming laptop") && moneyAmount > 1500){
+                itemNames.add(item);
+                itemSize = itemNames.size();
+                n++;
+                totalCost += 1500;
+                moneyAmount -= 1500;
+                System.out.print("You have purchased a gaming laptop for $" +gamingLaptop.getPrice());
+            }
+
+            else if (item.equals("Work laptop") && moneyAmount > 700){
+                itemNames.add(item);
+                itemSize = itemNames.size();
+                n++;
+                totalCost += 700;
+                moneyAmount -= 700;
+                System.out.print("You have purchased a work laptop for $" +workLaptop.getPrice());
+            }
+
+            else{
+                System.out.print("Invalid request");
+            }
+
+            
+
+
+
+            
             
             
         }
@@ -114,7 +168,7 @@ public class Main {
         }
 
         else if(command.equals("cartSize")){ 
-            System.out.println("You have a total of " +userCart.getNumberOfItems() + "items");
+            System.out.println("You have a total of " +userCart.getNumberOfItems() + " items");
         }
 
         else if (command.equals("Purchase")){
@@ -122,11 +176,11 @@ public class Main {
         }
 
         else if (command.equals("Balance")){
-            System.out.println("Do you want to put or withdraw money from your account?: ");
+            System.out.println("Do you want to deposit or withdraw money from your account?: ");
             String balance = key.readLine();
 
-            if (balance.equals("Put")){
-                System.out.println("How much money are you going to put in?: ");
+            if (balance.equals("Deposit")){
+                System.out.println("How much money are you going to deposit?: ");
                 Double putMoney = Double.parseDouble(key.readLine());
                 moneyAmount += putMoney;
             }
@@ -147,17 +201,46 @@ public class Main {
         else if(command.equals("Remove")){
             System.out.println("Which item do you want to remove.");
             for (int i = 0; i < n ; i++) {
-                System.out.println(itemNames.get(i));
+                System.out.println(i + ". " +itemNames.get(i));
 
                 
             }
 
             int takeOut = Integer.parseInt(key.readLine());
             System.out.println("You have removed " + itemNames.get(takeOut));
-            itemNames.remove(takeOut);
-                
 
             
+            if (itemNames.get(takeOut).equals("Small basketball")){
+                totalCost -= 28;
+              
+            }
+
+            else if (itemNames.get(takeOut).equals("Big basketball")){
+                totalCost -= 35;
+                
+            }
+
+            else if (itemNames.get(takeOut).equals("Blue switch keyboard")){
+                totalCost -= 100;
+            }
+
+            
+            else if (itemNames.get(takeOut).equals("Work keyboard")){
+                totalCost -= 10;
+     
+            }
+
+            else if (itemNames.get(takeOut).equals("Gaming laptop")){
+                totalCost -= 1500;
+
+            }
+
+            else if (itemNames.get(takeOut).equals("Work laptop")){
+                totalCost -= 700;
+               
+            }
+
+            itemNames.remove(takeOut);
                 
             
         }
@@ -168,7 +251,7 @@ public class Main {
             }
            
         }
-      
+      System.out.println("");
     }
     }
 }

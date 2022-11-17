@@ -2,6 +2,12 @@ package OOPAssignment;
 
 public class Customer{
 
+    /**
+     * Customer class file
+     * @author A. Young
+     * 
+     */
+
     private String firstName;
     private String lastName;
     private Address address;    
@@ -35,6 +41,5 @@ public class Customer{
     public String getAddress() {
         return this.address.toString();
     }
-
     
 }

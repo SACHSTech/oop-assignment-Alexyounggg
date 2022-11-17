@@ -2,6 +2,12 @@ package OOPAssignment;
 
 public class Products {
     
+    /**
+     * Products class file
+     * @author A. Young
+     * 
+     */
+
     private Double price;
     private String nameOfProduct;
 

@@ -1,6 +1,12 @@
 package OOPAssignment;
 
 public class Address {
+
+    /**
+     * Address class file
+     * @author A. Young
+     * 
+     */
     
     private String customerStreet;
     private String customerCity;
@@ -15,6 +21,6 @@ public class Address {
     }
 
     public String toString() {
-        return this.customerProvince + "," + this.customerCountry + "on" + this.customerCity + "," + this.customerStreet;
+        return this.customerProvince + ", " + this.customerCountry + " on " + this.customerCity + ", " + this.customerStreet;
     }
 }

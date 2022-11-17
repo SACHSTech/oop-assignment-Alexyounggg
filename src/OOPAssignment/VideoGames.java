@@ -1,6 +1,12 @@
 package OOPAssignment;
 
 public class VideoGames extends Games {
+
+    /**
+     * VideoGames class file
+     * @author A. Young
+     * 
+     */
     
     private String console;
     private String gameGenre;
@@ -17,11 +23,11 @@ public class VideoGames extends Games {
         return this.console;
     }
 
-    public String gameGenre() {
+    public String getGenre() {
         return this.gameGenre;
     }
 
-    public Boolean online(){
+    public Boolean getOnline(){
         return this.online;
     }
 }

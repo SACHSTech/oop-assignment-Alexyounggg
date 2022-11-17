@@ -2,6 +2,7 @@ package OOPAssignment;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.text.DecimalFormat;
 
 
 public class Main {
@@ -39,6 +40,7 @@ public class Main {
         int n = 0;
         ArrayList<String> itemNames = new ArrayList<String>();
         int itemSize = 0;
+        DecimalFormat dollarsDecimal = new DecimalFormat("0.00");
       
 
         BufferedReader key = new BufferedReader(new InputStreamReader(System.in));
@@ -100,7 +102,7 @@ public class Main {
                 n++;
                 totalCost += 28;
                 moneyAmount -= 28;
-                System.out.print("You have purchased a small basketball for $" +smallBall.getPrice());
+                System.out.print("You have purchased a small basketball for $" +dollarsDecimal.format(smallBall.getPrice()));
             }
             else{
                 System.out.println("You do not have enough money to complete your order.");
@@ -113,7 +115,7 @@ public class Main {
                 n++;
                 totalCost += 35;
                 moneyAmount -= 35;
-                System.out.print("You have purchased a big basketball for $" +bigBall.getPrice());
+                System.out.print("You have purchased a big basketball for $" +dollarsDecimal.format(bigBall.getPrice()));
             }
             else{
                 System.out.println("You do not have enough money to complete your order.");
@@ -129,7 +131,7 @@ public class Main {
                 n++;
                 totalCost += 100;
                 moneyAmount -= 100;
-                System.out.print("You have purchased a blue switch keyboard for $" +blueSwitchKeyboard.getPrice());
+                System.out.print("You have purchased a blue switch keyboard for $" +dollarsDecimal.format(blueSwitchKeyboard.getPrice()));
             }
                 else{
                     System.out.println("You do not have enough money to complete your order.");
@@ -144,7 +146,7 @@ public class Main {
                 n++;
                 totalCost += 10;
                 moneyAmount -= 10;
-                System.out.print("You have purchased a work keyboardfor $" +normalKeyboard.getPrice());
+                System.out.print("You have purchased a work keyboardfor $" +dollarsDecimal.format(normalKeyboard.getPrice()));
                 }
 
                 else{
@@ -159,7 +161,7 @@ public class Main {
                 n++;
                 totalCost += 1500;
                 moneyAmount -= 1500;
-                System.out.print("You have purchased a gaming laptop for $" +gamingLaptop.getPrice());
+                System.out.print("You have purchased a gaming laptop for $" +dollarsDecimal.format(gamingLaptop.getPrice()));
                 }
                 else{
                     System.out.println("You do not have enough money to complete your order.");
@@ -173,7 +175,7 @@ public class Main {
                 n++;
                 totalCost += 700;
                 moneyAmount -= 700;
-                System.out.print("You have purchased a work laptop for $" +workLaptop.getPrice());
+                System.out.print("You have purchased a work laptop for $" +dollarsDecimal.format(workLaptop.getPrice()));
                 }
 
                 else{
@@ -188,7 +190,7 @@ public class Main {
                 n++;
                 totalCost += 35;
                 moneyAmount -= 35;
-                System.out.print("You have purchased Minecraft for $" + minecraft.getPrice());
+                System.out.print("You have purchased Minecraft for $" + dollarsDecimal.format(minecraft.getPrice()));
                 }
                 else{
                     System.out.println("You do not have enough money to complete your order.");
@@ -202,7 +204,7 @@ public class Main {
                 n++;
                 totalCost += 20;
                 moneyAmount -= 20;
-                System.out.print("You have purchased monopoly for $" + monopoly.getPrice());
+                System.out.print("You have purchased monopoly for $" + dollarsDecimal.format(monopoly.getPrice()));
                 }
                 else{
                     System.out.println("You do not have enough money to complete your order.");
@@ -223,12 +225,12 @@ public class Main {
         }
 
         else if (command.equalsIgnoreCase("moneyCheck")) {
-            System.out.println("You have $" + userCustomer.getMoney() +" left");
+            System.out.println("You have $" + dollarsDecimal.format(userCustomer.getMoney())+" left");
             
         }
 
         else if(command.equalsIgnoreCase("totalCost")){
-            System.out.println("Total cost of $" + userCart.getTotalCost());
+            System.out.println("Total cost of $" + dollarsDecimal.format(userCart.getTotalCost()));
         }
 
         else if(command.equalsIgnoreCase("cartSize")){ 
@@ -236,7 +238,7 @@ public class Main {
         }
 
         else if (command.equalsIgnoreCase("Purchase")){
-            System.out.println("Thank you for confirming your purhcase " +userCustomer.getFirstName() + "! We will ship everything to " + userCustomer.getAddress());
+            System.out.println("Thank you for confirming your purhcase "  + userCustomer.getFirstName() + "! We will ship everything to " + userCustomer.getAddress());
         }
 
         else if (command.equalsIgnoreCase("Balance")){
@@ -247,7 +249,7 @@ public class Main {
                 System.out.println("How much money are you going to deposit?: ");
                 Double putMoney = Double.parseDouble(key.readLine());
                 moneyAmount += putMoney;
-                System.out.println("You have deposited $" +putMoney);
+                System.out.println("You have deposited $" +dollarsDecimal.format(putMoney));
             }
 
             if (balance.equalsIgnoreCase("Withdraw")){
@@ -259,7 +261,7 @@ public class Main {
                 }
                 else{
                     moneyAmount -= withdrawMoney;
-                    System.out.println("You have withdrew $" +withdrawMoney);
+                    System.out.println("You have withdrew $" + dollarsDecimal.format(withdrawMoney));
                 }
 
             }
@@ -315,6 +317,7 @@ public class Main {
             }
 
             itemNames.remove(takeOut);
+            n--;
                 
             
         }
@@ -327,7 +330,7 @@ public class Main {
         }
 
         else if(command.equalsIgnoreCase("Command")) {
-            System.out.print("Commands: \n 1. Shop \n 2. Moneycheck \n 3. Totalcost \n 4. Cartsize \n 5. Purchase \n 6. Balance \n 7.Remove \n 8. Cart items \n 9. Command \n 10. Log off");
+            System.out.print("Commands: \n 1. Shop \n 2. Moneycheck \n 3. Totalcost \n 4. Cartsize \n 5. Purchase \n 6. Balance \n 7. Remove \n 8. Cart items \n 9. Command \n 10. Log off");
         }
 
         else if(command.equalsIgnoreCase("Log off")) {

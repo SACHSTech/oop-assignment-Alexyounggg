@@ -48,5 +48,16 @@ public class Keyboard extends Products {
 
     }
 
+    public void getInfo(){
+        System.out.println("The size of the keyboard is " +sizePercent+ "%");
+        if (ifWireless = true){
+            System.out.println("The keyboard is wireless");
+
+        }
+        else{
+            System.out.println("The keyboard is not wireless");
+        }
+    }
+
     
 }

@@ -48,4 +48,9 @@ public class Boardgames extends Games {
     public String getType() {
         return this.gameType;
     }
+
+    public void getInfo(){
+        System.out.println("Area of the board is " +boardArea + "inches");
+        System.out.println("The type of board game is " +gameType);
+    }
 }

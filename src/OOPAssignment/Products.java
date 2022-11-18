@@ -6,7 +6,7 @@ package OOPAssignment;
      * 
      */
 
-public class Products {
+public abstract class Products {
     
 
 
@@ -41,4 +41,6 @@ public class Products {
     public String getProductName() {
         return this.nameOfProduct;
     }
+
+    public abstract void getInfo();
 }

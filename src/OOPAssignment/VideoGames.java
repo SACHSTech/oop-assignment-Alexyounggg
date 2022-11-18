@@ -60,4 +60,16 @@ public class VideoGames extends Games {
     public Boolean getOnline(){
         return this.online;
     }
+
+    public void getInfo(){
+        System.out.println("This game is played on " +console );
+        System.out.println("The game genre is " +gameGenre);
+        if (online = true){
+            System.out.println("Game can be played online");
+
+        }
+        else{
+            System.out.println("Game cannot be played online");
+        }
+}
 }

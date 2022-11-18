@@ -5,7 +5,7 @@ package OOPAssignment;
      * @author A. Young
      * 
      */
-public class Games extends Products {
+public abstract class Games extends Products {
 
   
     // Instance variables

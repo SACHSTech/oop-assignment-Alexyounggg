@@ -47,4 +47,9 @@ public class Basketball extends Products{
     public String getColour() {
         return this.colour;
     }
+
+    public void getInfo(){
+        System.out.println("Size of basketball is " +size+ " ''");
+        System.out.println("Colour of basketball is " + colour);
+    }
 }

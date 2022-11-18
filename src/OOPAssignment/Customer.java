@@ -13,7 +13,6 @@ public class Customer{
     private String firstName;
     private String lastName;
     private Address address;    
-    private Boolean onApp;
     private Double moneyAmount;
 
 
@@ -29,7 +28,6 @@ public class Customer{
         this.firstName = firstName;
         this.lastName = lastName;
         this.address = address;
-        this.onApp = true;
         this.moneyAmount = moneyAmount;
     }
     /**
@@ -68,5 +66,15 @@ public class Customer{
     public String getAddress() {
         return this.address.toString();
     }
+
+    public void moneyMinus(Double cost) {
+        moneyAmount -= cost;
+    }
+
+    public void moneyAdd(Double cost){
+        moneyAmount += cost;
+    }
+
+    
     
 }

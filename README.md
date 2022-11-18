@@ -3,7 +3,7 @@
 
 [*see instructions for details*](Instructions.md)
 
-<img src="https://github.com/SACHSTech/careers-in-computer-science-Alexyounggg/blob/main/university-of-waterloo-vertical-logo-300x195.png">
+<img src= "https://github.com/SACHSTech/oop-assignment-Alexyounggg/blob/main/OOP%20Assignment%20Diagram.drawio.png">
 
 ## Summary
 The program that will be run is a simulation for a online shopping app. The user will first have to enter some personal information such as their name and address. It will then direct the user to enter the amount of money they want to put into the app. After this, the user will be able to explore the different commands that the app offers such as shopping, removing items from their cart, checking their cart cost, etc. When the user is done with shopping, they can log off the app which will close the program. 

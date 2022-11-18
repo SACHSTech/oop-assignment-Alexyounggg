@@ -48,8 +48,12 @@ public class Basketball extends Products{
         return this.colour;
     }
 
+    /**
+       * Prints out basketball information
+       * 
+       */
     public void getInfo(){
-        System.out.println("Size of basketball is " +size+ " ''");
+        System.out.println("Size of basketball is " +size+ "''");
         System.out.println("Colour of basketball is " + colour);
     }
 }

@@ -49,8 +49,14 @@ public class Boardgames extends Games {
         return this.gameType;
     }
 
+    /**
+       * Prints out boardgame information
+       * 
+       */
     public void getInfo(){
-        System.out.println("Area of the board is " +boardArea + "inches");
-        System.out.println("The type of board game is " +gameType);
+        System.out.println("The number of players that can play are " + getPlayer());
+        System.out.println("The minimum age to play this game is " + getRate());
+        System.out.println("Area of the board is " +boardArea + " inches^2");
+        System.out.println("The type of board game is " +gameType + " game");
     }
 }

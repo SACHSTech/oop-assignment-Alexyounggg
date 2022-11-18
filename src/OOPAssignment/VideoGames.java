@@ -61,7 +61,14 @@ public class VideoGames extends Games {
         return this.online;
     }
 
+    
+    /**
+    * Prints out video game information
+    * 
+    */
     public void getInfo(){
+        System.out.println("The number of players that can play are " + getPlayer());
+        System.out.println("The minimum age to play this game is " + getRate());
         System.out.println("This game is played on " +console );
         System.out.println("The game genre is " +gameGenre);
         if (online = true){

@@ -59,8 +59,12 @@ public class Laptop extends Products {
         return this.typeOfGPU;
     }
 
+    /**
+       * Prints out laptop information
+       * 
+       */
     public void getInfo(){
-        System.out.println("This laptop has a "+ processor);
+        System.out.println("This laptop has an "+ processor);
         System.out.println("This laptop has a "+ typeOfGPU);
         if (hasCamera = true){
             System.out.println("The laptop has a camera");

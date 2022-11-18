@@ -58,7 +58,7 @@ public class OnlineCart {
        * @return true or false depending on if the cart is empty
        */
 
-    public Boolean emptyCart(){
+    public Boolean getEmptyCart(){
         return emptyCart;
     }
 
@@ -68,15 +68,29 @@ public class OnlineCart {
        * @return array of items in the cart
        */
 
-    public ArrayList<Products> itemType(){ 
+    public ArrayList<Products> getItemType(){ 
         return this.itemType;
     }
 
+     /**
+    * Adds cart balance by the product cost
+    * @param cost - Cost of product
+    * 
+    */
     public void moneyPay(Double cost){
         totalCost += cost;
     }
 
+      /**
+    * Substracts cart balance by the product cost
+    * @param cost - Cost of product
+    * 
+    */
     public void moneyTake(Double cost){
         totalCost -= cost;
+    }
+
+    public void cartChange(){
+        numberOfItems = itemType.size();
     }
 }

@@ -47,8 +47,12 @@ public class MechanicalKeyboard extends Keyboard {
         return this.ifLighting;
     }
 
+    /**
+       * Prints out mechanical keyboard information
+       * 
+       */
     public void getInfo(){
-        System.out.println("This keyboard has " +mechSwitch+ " switch");
+        System.out.println("This keyboard has " +mechSwitch);
         
         if (ifLighting = true){
             System.out.println("The keyboard can light up");

@@ -67,10 +67,21 @@ public class Customer{
         return this.address.toString();
     }
 
+    /**
+    * Subtracts customers money by the product cost
+    * @param cost - Cost of product
+    * 
+    */
+
     public void moneyMinus(Double cost) {
         moneyAmount -= cost;
     }
 
+    /**
+    * Adds customers money by the product cost
+    * @param cost - Cost of product
+    * 
+    */
     public void moneyAdd(Double cost){
         moneyAmount += cost;
     }

@@ -35,7 +35,7 @@ public class Main {
         Double totalCost; 
         totalCost = 0.00;
         int n = 0;
-        ArrayList<String> itemNames = new ArrayList<String>();
+        ArrayList<Products> itemNames = new ArrayList<Products>();
         int itemSize = 0;
         DecimalFormat dollarsDecimal = new DecimalFormat("0.00");
       
@@ -66,8 +66,8 @@ public class Main {
         
         // Creating product objects
         
-        smallBall = new Basketball(28.00, "Kids Basketball", 27.5, "yellow");
-        bigBall = new Basketball(35.00, "Adults Basketball", 29.5, "brown");
+        smallBall = new Basketball(28.00, "Small Basketball", 27.5, "yellow");
+        bigBall = new Basketball(35.00, "Big Basketball", 29.5, "brown");
         blueSwitchKeyboard = new MechanicalKeyboard(100.00, "Blue Switch Keyboard" ,100, true, "Blue Switch", true);
         normalKeyboard = new Keyboard(10.00, "Normal Keyboard" ,100, false);
         gamingLaptop = new Laptop (1500.00, "Gaming Laptop", "I9", true, "RTX 30");
@@ -75,6 +75,7 @@ public class Main {
         minecraft = new VideoGames(35.00, "Minecraft", 5, 10, "PC", "Open world", true);
         monopoly = new Boardgames(20.00, "Monopoly", 8, 8, 400, "Dice" );
        
+
         
         System.out.println("Great job! You can now get started with shopping.  ");
         System.out.println("Commands: \n 1. Shop \n 2. Moneycheck \n 3. Totalcost \n 4. Cartsize \n 5. Purchase \n 6. Balance \n 7. Remove \n 8. Cart items \n 9. Command \n 10. Log off \n");
@@ -98,7 +99,7 @@ public class Main {
             if (item.equalsIgnoreCase("Small basketball")){
                 // Makes sure that the user has enough money to buy the product
                 if (moneyAmount > 28){
-                itemNames.add(item);
+                itemNames.add(smallBall);
                 itemSize = itemNames.size();
                 n++;
                 userCart.moneyPay(28.0);
@@ -111,7 +112,7 @@ public class Main {
         }
             else if (item.equalsIgnoreCase("Big basketball")){
                if (moneyAmount > 35){
-                itemNames.add(item);
+                itemNames.add(bigBall);
                 itemSize = itemNames.size();
                 n++;
                 userCart.moneyPay(35.0);
@@ -127,7 +128,7 @@ public class Main {
 
             else if (item.equalsIgnoreCase("Blue switch keyboard")){
                 if (moneyAmount > 100){
-                itemNames.add(item);
+                itemNames.add(blueSwitchKeyboard);
                 itemSize = itemNames.size();
                 n++;
                 userCart.moneyPay(100.0);
@@ -142,7 +143,7 @@ public class Main {
             
             else if (item.equalsIgnoreCase("Work keyboard") && moneyAmount > 10){
                 if (moneyAmount > 10){
-                itemNames.add(item);
+                itemNames.add(normalKeyboard);
                 itemSize = itemNames.size();
                 n++;
                 userCart.moneyPay(10.0);
@@ -157,7 +158,7 @@ public class Main {
 
             else if (item.equalsIgnoreCase("Gaming laptop")){
                 if (moneyAmount > 1500){
-                itemNames.add(item);
+                itemNames.add(gamingLaptop);
                 itemSize = itemNames.size();
                 n++;
                 userCart.moneyPay(1500.0);
@@ -171,7 +172,7 @@ public class Main {
 
             else if (item.equalsIgnoreCase("Work laptop")){
                 if(moneyAmount > 700){
-                itemNames.add(item);
+                itemNames.add(workLaptop);
                 itemSize = itemNames.size();
                 n++;
                 userCart.moneyPay(700.0);
@@ -186,7 +187,7 @@ public class Main {
 
             else if (item.equalsIgnoreCase("Minecraft")){
                 if(moneyAmount > 35){
-                itemNames.add(item);
+                itemNames.add(minecraft);
                 itemSize = itemNames.size();
                 n++;
                 userCart.moneyPay(35.0);
@@ -200,7 +201,7 @@ public class Main {
 
             else if(item.equalsIgnoreCase("Monopoly")){ 
                 if (moneyAmount > 20){
-                itemNames.add(item);
+                itemNames.add(monopoly);
                 itemSize = itemNames.size();
                 n++;
                 userCart.moneyPay(20.0);
@@ -281,55 +282,67 @@ public class Main {
             System.out.println("Which item do you want to remove.");
            // Outputs list of items user has in the cart
             for (int i = 0; i < n ; i++) {
-                System.out.println(i+1 + ". " +itemNames.get(i));
+                System.out.println(i+1 + ". " +itemNames.get(i).getProductName());
 
                 
             }
 
-            int takeOut = Integer.parseInt(key.readLine());
-            System.out.println("You have removed " + itemNames.get(takeOut -1));
+            int takeOut = Integer.parseInt(key.readLine()) - 1;
+            System.out.println("You have removed " + itemNames.get(takeOut).getProductName());
 
             // Deducts cost from cart depending on which item was picked
-            if (itemNames.get(takeOut).equalsIgnoreCase("Small basketball")){
+            if (itemNames.get(takeOut).getProductName().equalsIgnoreCase("Small basketball")){
                 userCart.moneyTake(28.00);
+                userCustomer.moneyAdd(28.00);
               
             }
 
-            else if (itemNames.get(takeOut).equalsIgnoreCase("Big basketball")){
+            else if (itemNames.get(takeOut).getProductName().equalsIgnoreCase("Big basketball")){
                 userCart.moneyTake(35.00);
+                userCustomer.moneyAdd(35.00);
                 
             }
 
-            else if (itemNames.get(takeOut).equalsIgnoreCase("Blue switch keyboard")){
+            else if (itemNames.get(takeOut).getProductName().equalsIgnoreCase("Blue switch keyboard")){
                 userCart.moneyTake(100.00);
+                userCustomer.moneyAdd(100.00);
             }
 
             
-            else if (itemNames.get(takeOut).equalsIgnoreCase("Work keyboard")){
+            else if (itemNames.get(takeOut).getProductName().equalsIgnoreCase("Work keyboard")){
                 userCart.moneyTake(10.00);
+                userCustomer.moneyAdd(10.00);
      
             }
 
-            else if (itemNames.get(takeOut).equalsIgnoreCase("Gaming laptop")){
+            else if (itemNames.get(takeOut).getProductName().equalsIgnoreCase("Gaming laptop")){
                 userCart.moneyTake(1500.00);
+                userCustomer.moneyAdd(1500.00);
 
             }
 
-            else if (itemNames.get(takeOut).equalsIgnoreCase("Work laptop")){
+            else if (itemNames.get(takeOut).getProductName().equalsIgnoreCase("Work laptop")){
                 userCart.moneyTake(700.00);
+                userCustomer.moneyAdd(700.00);
                
             }
 
-            else if (itemNames.get(takeOut).equalsIgnoreCase("Minecraft")){
+            else if (itemNames.get(takeOut).getProductName().equalsIgnoreCase("Minecraft")){
                 userCart.moneyTake(35.00);
+                userCustomer.moneyAdd(35.00);
             }
 
-            else if (itemNames.get(takeOut).equalsIgnoreCase("Monopoly")){
+            else if (itemNames.get(takeOut).getProductName().equalsIgnoreCase("Monopoly")){
                 userCart.moneyTake(20.00);
+                userCustomer.moneyAdd(20.00);
+            }
+
+            else{
+                System.out.println("Invalid option");
             }
 
             // Removes item from the cart
-            itemNames.remove(takeOut - 1);
+            itemNames.remove(takeOut);
             n--;
                 
             
@@ -339,7 +352,7 @@ public class Main {
         else if(command.equalsIgnoreCase("Cart items") && itemSize > 0){
            // Displays the content of the cart
             for (int i = 0; i < n; i++){
-                System.out.println(itemNames.get(i));
+                System.out.println(itemNames.get(i).getProductName());
             }
            
         }

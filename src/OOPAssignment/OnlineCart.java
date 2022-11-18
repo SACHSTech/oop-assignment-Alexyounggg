@@ -15,7 +15,7 @@ public class OnlineCart {
     private int numberOfItems;
     private Double totalCost;
     private Boolean emptyCart;
-    private ArrayList<String> itemType = new ArrayList<String>();
+    private ArrayList<Products> itemType = new ArrayList<Products>();
 
  /**
   * Constructor - creates new instance of an keyboard class
@@ -25,7 +25,7 @@ public class OnlineCart {
   * @param emtpyCart - If the cart is empty
   * @param itemType - The items in the cart
   */
-    public OnlineCart (int numberOfItems, Double totalCost, Boolean emptyCart, ArrayList<String> itemType) {
+    public OnlineCart (int numberOfItems, Double totalCost, Boolean emptyCart, ArrayList<Products> itemType) {
         this.numberOfItems = numberOfItems;
         this.totalCost = totalCost;
         this.emptyCart = emptyCart;
@@ -68,7 +68,7 @@ public class OnlineCart {
        * @return array of items in the cart
        */
 
-    public ArrayList<String> itemType(){ 
+    public ArrayList<Products> itemType(){ 
         return this.itemType;
     }
 

@@ -57,7 +57,7 @@ public class Main {
         province = key.readLine();
         System.out.print("Please enter your country: ");
         country = key.readLine();
-        System.out.print("We are almost finished! We would like to know how much money you want to put into the app. You can add or withdraw money later on: ");
+        System.out.print("We are almost finished! We would like to know how much money you want to put into the app. \nYou can add or withdraw money later on: ");
         moneyAmount = Double.parseDouble(key.readLine());      
         
         // Creating user and cart 
@@ -69,16 +69,16 @@ public class Main {
         smallBall = new Basketball(28.00, "Small Basketball", 27.5, "yellow");
         bigBall = new Basketball(35.00, "Big Basketball", 29.5, "brown");
         blueSwitchKeyboard = new MechanicalKeyboard(100.00, "Blue Switch Keyboard" ,100, true, "Blue Switch", true);
-        normalKeyboard = new Keyboard(10.00, "Normal Keyboard" ,100, false);
+        normalKeyboard = new Keyboard(10.00, "Membrane keyboard" ,100, false);
         gamingLaptop = new Laptop (1500.00, "Gaming Laptop", "I9", true, "RTX 30");
-        workLaptop = new Laptop(700.00, "Work Laptop" ,"I5", true, "None");
+        workLaptop = new Laptop(700.00, "Work Laptop" ,"I5", true, "RTX 10");
         minecraft = new VideoGames(35.00, "Minecraft", 5, 10, "PC", "Open world", true);
         monopoly = new Boardgames(20.00, "Monopoly", 8, 8, 400, "Dice" );
        
 
         
         System.out.println("Great job! You can now get started with shopping.  ");
-        System.out.println("Commands: \n 1. Shop \n 2. Moneycheck \n 3. Totalcost \n 4. Cartsize \n 5. Purchase \n 6. Balance \n 7. Remove \n 8. Cart items \n 9. Command \n 10. Log off \n");
+        System.out.println("Commands: \n 1. Shop \n 2. Moneycheck \n 3. Totalcost \n 4. Cartsize \n 5. Purchase \n 6. Balance \n 7. Remove \n 8. Cart items \n 9. Command \n 10. Product info \n 11. Log off \n");
         
         // Loops while user is still online
         while(onApp == true) {
@@ -141,7 +141,7 @@ public class Main {
             }
 
             
-            else if (item.equalsIgnoreCase("Work keyboard") && moneyAmount > 10){
+            else if (item.equalsIgnoreCase("Membrane keyboard") && moneyAmount > 10){
                 if (moneyAmount > 10){
                 itemNames.add(normalKeyboard);
                 itemSize = itemNames.size();
@@ -260,12 +260,12 @@ public class Main {
             }
 
             // Checks to see if the user enters "withdraw"
-            if (balance.equalsIgnoreCase("Withdraw")){
+            else if (balance.equalsIgnoreCase("Withdraw")){
                 System.out.println("How much money are you going to take out?: ");
                 Double withdrawMoney = Double.parseDouble(key.readLine());
                 // Makes sure that user does not have negative money have withdrawing
-                if (withdrawMoney > moneyAmount) {
-                    System.out.print("Invalid request.");
+                if (withdrawMoney > userCustomer.getMoney()) {
+                    System.out.print("Your balance will go in the negatives!.");
 
                 }
                 else{
@@ -275,12 +275,17 @@ public class Main {
                 }
 
             }
+
+            else{
+                System.out.println("Invalid option.");
+            }
         }
 
         // Checks to see if user enters "remove"
         else if(command.equalsIgnoreCase("Remove")){
+            if (userCart.getNumberOfItems() > 0){
             System.out.println("Which item do you want to remove.");
-           // Outputs list of items user has in the cart
+            // Outputs list of items user has in the cart
             for (int i = 0; i < n ; i++) {
                 System.out.println(i+1 + ". " +itemNames.get(i).getProductName());
 
@@ -343,9 +348,13 @@ public class Main {
 
             // Removes item from the cart
             itemNames.remove(takeOut);
-            n--;
+            userCart.cartChange();
                 
-            
+        }
+         else{
+            System.out.println("You have no items to remove.");
+        }
+
         }
 
         // Checks to see if user enters "cart items"
@@ -360,7 +369,59 @@ public class Main {
         // Checks to see if user enters "command"
         else if(command.equalsIgnoreCase("Command")) {
             // Outputs commands that can be used
-            System.out.print("Commands: \n 1. Shop \n 2. Moneycheck \n 3. Totalcost \n 4. Cartsize \n 5. Purchase \n 6. Balance \n 7. Remove \n 8. Cart items \n 9. Command \n 10. Log off");
+            System.out.print("Commands: \n 1. Shop \n 2. Moneycheck \n 3. Totalcost \n 4. Cartsize \n 5. Purchase \n 6. Balance \n 7. Remove \n 8. Cart items \n 9. Command \n 10. Product info \n 11. Log off");
+        }
+
+        // Checks to see if the user enters "Product info"
+        else if(command.equalsIgnoreCase("Product info")){
+            System.out.println("Items:\n 1. Small basketball $28.00\n 2. Big basketball $35.00 \n 3. Blue switch keyboard $100.00 \n 4. Membrane keyboard $10.00 \n 5. Gaming laptop $1500.00\n 6. Work laptop $700.00\n 7. Minecraft $35.00 \n 8. Monopoly $20.00\n");
+            System.out.println("Which product information do you want to check?: ");
+            String information = key.readLine();
+
+            // Outputs product information based on the user input
+            if (information.equalsIgnoreCase("Small basketball")){
+                smallBall.getInfo();
+              
+            }
+
+            else if (information.equalsIgnoreCase("Big basketball")){
+                bigBall.getInfo();
+                
+            }
+
+            else if (information.equalsIgnoreCase("Blue switch keyboard")){
+                blueSwitchKeyboard.getInfo();
+            }
+
+            
+            else if (information.equalsIgnoreCase("Membrane keyboard")){
+                normalKeyboard.getInfo();
+     
+            }
+
+            else if (information.equalsIgnoreCase("Gaming laptop")){
+                gamingLaptop.getInfo();
+
+            }
+
+            else if (information.equalsIgnoreCase("Work laptop")){
+                workLaptop.getInfo();
+               
+            }
+
+            else if (information.equalsIgnoreCase("Minecraft")){
+                minecraft.getInfo();
+            }
+
+            else if (information.equalsIgnoreCase("Monopoly")){
+                monopoly.getInfo();
+            }
+            
+            else{
+                System.out.println("Invalid option.");
+            }
+
+            
         }
 
         // Checks to see if user enters "Log off"
@@ -376,6 +437,7 @@ public class Main {
             System.out.print("Invalid request. Please type one of the listed commands.");
         }
       System.out.println("");
+      userCart.cartChange();
     }
     }
 }

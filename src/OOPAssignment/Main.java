@@ -7,9 +7,6 @@ import java.text.DecimalFormat;
 
 public class Main {
     
-
-
-
     public static void main(String[] args) throws IOException {
 
         //Objects
@@ -25,7 +22,7 @@ public class Main {
         Boardgames monopoly;
 
         
-        // Intialize variables
+        // Variables
         String firstName;
         String lastName;
         String street;
@@ -45,6 +42,7 @@ public class Main {
 
         BufferedReader key = new BufferedReader(new InputStreamReader(System.in));
 
+        // Asks the user for sets of information
         System.out.println("Welcome to the Online Shopping App of Amazing");
         System.out.println("Before you continue, we would like to ask you for some personal information");
         System.out.print("Please enter your first name: ");
@@ -62,6 +60,10 @@ public class Main {
         System.out.print("We are almost finished! We would like to know how much money you want to put into the app. You can add or withdraw money later on: ");
         moneyAmount = Double.parseDouble(key.readLine());      
         
+        // Creating user and cart 
+        userCustomer = new Customer (firstName, lastName, new Address(street, city, province, country), moneyAmount);
+        userCart = new OnlineCart(itemSize, totalCost, emptyCart, itemNames);
+        
         // Creating product objects
         
         smallBall = new Basketball(28.00, "Kids Basketball", 27.5, "yellow");
@@ -77,31 +79,30 @@ public class Main {
         System.out.println("Great job! You can now get started with shopping.  ");
         System.out.println("Commands: \n 1. Shop \n 2. Moneycheck \n 3. Totalcost \n 4. Cartsize \n 5. Purchase \n 6. Balance \n 7. Remove \n 8. Cart items \n 9. Command \n 10. Log off \n");
         
-        
+        // Loops while user is still online
         while(onApp == true) {
-        userCustomer = new Customer (firstName, lastName, new Address(street, city, province, country), moneyAmount);
-        userCart = new OnlineCart(itemSize, totalCost, emptyCart, itemNames);
+       
+        // Reads the input from the user
         System.out.print("What would you like to do?: ");
         String command = key.readLine();
 
        
-
+        // Checks to see if user enters "shop"
         if(command.equalsIgnoreCase("Shop")) {
             System.out.print("Items:\n 1. Small basketball $28.00\n 2. Big basketball $35.00 \n 3. Blue switch keyboard $100.00 \n 4. Membrane keyboard $10.00 \n 5. Gaming laptop $1500.00\n 6. Work laptop $700.00\n 7. Minecraft $35.00 \n 8. Monopoly $20.00\n");
+            // Asks the user what to purchase
             System.out.print(" What would you like to purchase: ");
             String item = key.readLine();
-
-            
-
-            
-
+   
+            // Code below will check if the user enters one of the products
             if (item.equalsIgnoreCase("Small basketball")){
+                // Makes sure that the user has enough money to buy the product
                 if (moneyAmount > 28){
                 itemNames.add(item);
                 itemSize = itemNames.size();
                 n++;
-                totalCost += 28;
-                moneyAmount -= 28;
+                userCart.moneyPay(28.0);
+                userCustomer.moneyMinus(28.0);
                 System.out.print("You have purchased a small basketball for $" +dollarsDecimal.format(smallBall.getPrice()));
             }
             else{
@@ -113,8 +114,8 @@ public class Main {
                 itemNames.add(item);
                 itemSize = itemNames.size();
                 n++;
-                totalCost += 35;
-                moneyAmount -= 35;
+                userCart.moneyPay(35.0);
+                userCustomer.moneyMinus(35.0);
                 System.out.print("You have purchased a big basketball for $" +dollarsDecimal.format(bigBall.getPrice()));
             }
             else{
@@ -129,8 +130,8 @@ public class Main {
                 itemNames.add(item);
                 itemSize = itemNames.size();
                 n++;
-                totalCost += 100;
-                moneyAmount -= 100;
+                userCart.moneyPay(100.0);
+                userCustomer.moneyMinus(100.0);;
                 System.out.print("You have purchased a blue switch keyboard for $" +dollarsDecimal.format(blueSwitchKeyboard.getPrice()));
             }
                 else{
@@ -144,8 +145,8 @@ public class Main {
                 itemNames.add(item);
                 itemSize = itemNames.size();
                 n++;
-                totalCost += 10;
-                moneyAmount -= 10;
+                userCart.moneyPay(10.0);
+                userCustomer.moneyMinus(10.0);
                 System.out.print("You have purchased a work keyboardfor $" +dollarsDecimal.format(normalKeyboard.getPrice()));
                 }
 
@@ -159,8 +160,8 @@ public class Main {
                 itemNames.add(item);
                 itemSize = itemNames.size();
                 n++;
-                totalCost += 1500;
-                moneyAmount -= 1500;
+                userCart.moneyPay(1500.0);
+                userCustomer.moneyMinus(1500.0);
                 System.out.print("You have purchased a gaming laptop for $" +dollarsDecimal.format(gamingLaptop.getPrice()));
                 }
                 else{
@@ -173,8 +174,8 @@ public class Main {
                 itemNames.add(item);
                 itemSize = itemNames.size();
                 n++;
-                totalCost += 700;
-                moneyAmount -= 700;
+                userCart.moneyPay(700.0);
+                userCustomer.moneyMinus(700.0);
                 System.out.print("You have purchased a work laptop for $" +dollarsDecimal.format(workLaptop.getPrice()));
                 }
 
@@ -188,8 +189,8 @@ public class Main {
                 itemNames.add(item);
                 itemSize = itemNames.size();
                 n++;
-                totalCost += 35;
-                moneyAmount -= 35;
+                userCart.moneyPay(35.0);
+                userCustomer.moneyMinus(35.0);
                 System.out.print("You have purchased Minecraft for $" + dollarsDecimal.format(minecraft.getPrice()));
                 }
                 else{
@@ -202,8 +203,8 @@ public class Main {
                 itemNames.add(item);
                 itemSize = itemNames.size();
                 n++;
-                totalCost += 20;
-                moneyAmount -= 20;
+                userCart.moneyPay(20.0);
+                userCustomer.moneyMinus(20.0);
                 System.out.print("You have purchased monopoly for $" + dollarsDecimal.format(monopoly.getPrice()));
                 }
                 else{
@@ -214,131 +215,151 @@ public class Main {
             else{
                 System.out.print("Invalid request");
             }
-
-            
-
-
-
-            
-            
             
         }
-
+        // Checks to see if user enters "moneyCheck"
         else if (command.equalsIgnoreCase("moneyCheck")) {
+            // Outputs how much money the user has left
             System.out.println("You have $" + dollarsDecimal.format(userCustomer.getMoney())+" left");
             
         }
 
+        // Checks to see if user enters "totalCost"
         else if(command.equalsIgnoreCase("totalCost")){
+            // Outputs the total cost of the cart 
             System.out.println("Total cost of $" + dollarsDecimal.format(userCart.getTotalCost()));
         }
 
+        // Checks to see if the user enters "cartSize"
         else if(command.equalsIgnoreCase("cartSize")){ 
+            // Outputs total number of items in the cart
             System.out.println("You have a total of " +userCart.getNumberOfItems() + " items");
         }
 
+        // Checks to see if the user enters "Purchase"
         else if (command.equalsIgnoreCase("Purchase")){
+            // Confirms the purchase and will log user off the app
             System.out.println("Thank you for confirming your purhcase "  + userCustomer.getFirstName() + "! We will ship everything to " + userCustomer.getAddress());
+            System.out.println("You will now log off");
+            onApp = false;
         }
 
+        // Checks to see if the user has entered "balance"
         else if (command.equalsIgnoreCase("Balance")){
             System.out.println("Do you want to deposit or withdraw money from your account?: ");
             String balance = key.readLine();
 
+            // Checks to see if the user enters "deposit"
             if (balance.equalsIgnoreCase("Deposit")){
                 System.out.println("How much money are you going to deposit?: ");
                 Double putMoney = Double.parseDouble(key.readLine());
-                moneyAmount += putMoney;
+                // Adds amount of money user enters 
+                userCustomer.moneyAdd(putMoney);
                 System.out.println("You have deposited $" +dollarsDecimal.format(putMoney));
             }
 
+            // Checks to see if the user enters "withdraw"
             if (balance.equalsIgnoreCase("Withdraw")){
                 System.out.println("How much money are you going to take out?: ");
                 Double withdrawMoney = Double.parseDouble(key.readLine());
+                // Makes sure that user does not have negative money have withdrawing
                 if (withdrawMoney > moneyAmount) {
                     System.out.print("Invalid request.");
 
                 }
                 else{
-                    moneyAmount -= withdrawMoney;
+                    // Substracts the money user enters 
+                    userCustomer.moneyMinus(withdrawMoney);
                     System.out.println("You have withdrew $" + dollarsDecimal.format(withdrawMoney));
                 }
 
             }
         }
+
+        // Checks to see if user enters "remove"
         else if(command.equalsIgnoreCase("Remove")){
             System.out.println("Which item do you want to remove.");
+           // Outputs list of items user has in the cart
             for (int i = 0; i < n ; i++) {
-                System.out.println(i + ". " +itemNames.get(i));
+                System.out.println(i+1 + ". " +itemNames.get(i));
 
                 
             }
 
             int takeOut = Integer.parseInt(key.readLine());
-            System.out.println("You have removed " + itemNames.get(takeOut));
+            System.out.println("You have removed " + itemNames.get(takeOut -1));
 
-            
+            // Deducts cost from cart depending on which item was picked
             if (itemNames.get(takeOut).equalsIgnoreCase("Small basketball")){
-                totalCost -= 28;
+                userCart.moneyTake(28.00);
               
             }
 
             else if (itemNames.get(takeOut).equalsIgnoreCase("Big basketball")){
-                totalCost -= 35;
+                userCart.moneyTake(35.00);
                 
             }
 
             else if (itemNames.get(takeOut).equalsIgnoreCase("Blue switch keyboard")){
-                totalCost -= 100;
+                userCart.moneyTake(100.00);
             }
 
             
             else if (itemNames.get(takeOut).equalsIgnoreCase("Work keyboard")){
-                totalCost -= 10;
+                userCart.moneyTake(10.00);
      
             }
 
             else if (itemNames.get(takeOut).equalsIgnoreCase("Gaming laptop")){
-                totalCost -= 1500;
+                userCart.moneyTake(1500.00);
 
             }
 
             else if (itemNames.get(takeOut).equalsIgnoreCase("Work laptop")){
-                totalCost -= 700;
+                userCart.moneyTake(700.00);
                
             }
 
             else if (itemNames.get(takeOut).equalsIgnoreCase("Minecraft")){
-                totalCost -= 30;
+                userCart.moneyTake(35.00);
             }
 
             else if (itemNames.get(takeOut).equalsIgnoreCase("Monopoly")){
-                totalCost -= 20;
+                userCart.moneyTake(20.00);
             }
 
-            itemNames.remove(takeOut);
+            // Removes item from the cart
+            itemNames.remove(takeOut - 1);
             n--;
                 
             
         }
 
+        // Checks to see if user enters "cart items"
         else if(command.equalsIgnoreCase("Cart items") && itemSize > 0){
+           // Displays the content of the cart
             for (int i = 0; i < n; i++){
                 System.out.println(itemNames.get(i));
             }
            
         }
 
+        // Checks to see if user enters "command"
         else if(command.equalsIgnoreCase("Command")) {
+            // Outputs commands that can be used
             System.out.print("Commands: \n 1. Shop \n 2. Moneycheck \n 3. Totalcost \n 4. Cartsize \n 5. Purchase \n 6. Balance \n 7. Remove \n 8. Cart items \n 9. Command \n 10. Log off");
         }
 
+        // Checks to see if user enters "Log off"
         else if(command.equalsIgnoreCase("Log off")) {
             System.out.println("You will now log off. Thank you for shopping on our app!");
+            // Stops while loop
             onApp = false;
         }
 
+        
         else{
+            // Outputs when user enters an invalid command
             System.out.print("Invalid request. Please type one of the listed commands.");
         }
       System.out.println("");

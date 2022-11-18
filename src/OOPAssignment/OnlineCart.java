@@ -71,4 +71,12 @@ public class OnlineCart {
     public ArrayList<String> itemType(){ 
         return this.itemType;
     }
+
+    public void moneyPay(Double cost){
+        totalCost += cost;
+    }
+
+    public void moneyTake(Double cost){
+        totalCost -= cost;
+    }
 }
